@@ -107,16 +107,14 @@ The server exposes **18 tools**.
 | Tool | Description |
 |------|-------------|
 | `send_email` | Send an email from a PurpleToad mailbox |
-| `reply_to_message` | Reply to an existing message (preserves thread) |
 | `schedule_email` | Schedule an email for future delivery |
 | `cancel_scheduled_email` | Cancel a scheduled email before it sends |
 | `list_messages` | List received emails with filters (unread, since, from, thread) |
 | `get_message` | Get full message body and attachments |
 | `search_messages` | Full-text search across all inbound emails |
-| `mark_read` | Mark one or more messages as read |
+| `mark_read` | Mark a message as read |
 | `list_outbound_messages` | List sent emails with delivery status |
 | `get_outbound_message` | Track a single email's delivery history |
-| `get_mailbox_status` | Quick unread count and quota for a mailbox |
 | `get_account` | Account profile, plan, and usage stats |
 
 ### Infrastructure Reference
@@ -129,11 +127,13 @@ The server exposes **18 tools**.
 | `get_mailbox` | Get mailbox details (quota, last login, alternate email) |
 | `list_aliases` | List all email aliases with source and targets |
 
-### Domain Setup
+### Domain & Mailbox Setup
 
 | Tool | Description |
 |------|-------------|
-| `create_domain` | Add a new domain and receive copy-paste DNS records. Requires an API key with `manage` scope. |
+| `create_domain` | Add a new domain and receive copy-paste DNS records. Requires `manage` scope. |
+| `create_mailbox` | Create a mailbox under a verified domain. The password is shown once — change it immediately. Requires `manage` scope. |
+| `create_alias` | Create an email alias that forwards to target mailboxes. Requires `manage` scope. |
 
 ## Example Workflows
 
@@ -188,6 +188,33 @@ The AI returns a formatted DNS table:
 ```
 
 Copy these into your DNS provider (Cloudflare, Namecheap, GoDaddy, etc.). The domain verifies automatically within minutes.
+
+### "Create a mailbox"
+
+```
+User: Create a new mailbox support@mycompany.com
+
+Agent: create_mailbox(
+  domain_id="uuid",
+  local_part="support",
+  display_name="Support Team",
+  quota_mb=512
+)
+```
+
+The AI returns the new mailbox password. **Copy it and change it immediately** — it is shown once only.
+
+### "Create a support alias"
+
+```
+User: Set up a support alias that forwards to alice and bob
+
+Agent: create_alias(
+  domain_id="uuid",
+  source="support",
+  targets=["alice@mycompany.com", "bob@mycompany.com"]
+)
+```
 
 ### "Track whether my newsletter was delivered"
 

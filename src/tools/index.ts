@@ -1,8 +1,10 @@
 import { createDomainTool } from "./create-domain.js";
 import { listDomainsTool } from "./list-domains.js";
 import { getDomainTool } from "./get-domain.js";
+import { createMailboxTool } from "./create-mailbox.js";
 import { listMailboxesTool } from "./list-mailboxes.js";
 import { getMailboxTool } from "./get-mailbox.js";
+import { createAliasTool } from "./create-alias.js";
 import { listAliasesTool } from "./list-aliases.js";
 import { listMessagesTool } from "./list-messages.js";
 import { getMessageTool } from "./get-message.js";
@@ -23,8 +25,12 @@ export interface ToolDef {
 }
 
 export const tools: Record<string, ToolDef> = {
-  // ─── Domain Setup (selling point) ─────────────────────────────────────────
+  // ─── Domain Setup ─────────────────────────────────────────────────────────
   [createDomainTool.name]: createDomainTool as ToolDef,
+
+  // ─── Infrastructure Management ────────────────────────────────────────────
+  [createMailboxTool.name]: createMailboxTool as ToolDef,
+  [createAliasTool.name]: createAliasTool as ToolDef,
 
   // ─── Read-Only Reference ──────────────────────────────────────────────────
   [listDomainsTool.name]: listDomainsTool as ToolDef,
