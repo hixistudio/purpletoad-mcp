@@ -1,10 +1,10 @@
-# PurpleToad MCP Server
+# PurpleToad Mail MCP Server
 
-> Model Context Protocol server for PurpleToad email infrastructure. Your AI agent sends, receives, searches, and tracks email.
+> Model Context Protocol server for PurpleToad Mail. Your AI agent sends, receives, searches, and tracks email.
 
 ## What is this?
 
-The **PurpleToad MCP Server** connects your AI agent (Claude, Cursor, etc.) to your PurpleToad email infrastructure via the [Model Context Protocol](https://modelcontextprotocol.io/).
+The **PurpleToad Mail MCP Server** connects your AI agent (Claude, Cursor, etc.) to your PurpleToad Mail account via the [Model Context Protocol](https://modelcontextprotocol.io/).
 
 Your agent can:
 
@@ -106,7 +106,7 @@ The server exposes **18 tools**.
 
 | Tool | Description |
 |------|-------------|
-| `send_email` | Send an email from a PurpleToad mailbox |
+| `send_email` | Send an email from a PurpleToad Mail mailbox |
 | `schedule_email` | Schedule an email for future delivery |
 | `cancel_scheduled_email` | Cancel a scheduled email before it sends |
 | `list_messages` | List received emails with filters (unread, since, from, thread) |
@@ -171,7 +171,7 @@ Agent: get_message(message_id="...")
 ### "Set up a new domain"
 
 ```
-User: Add mycompany.com to PurpleToad
+User: Add mycompany.com to PurpleToad Mail
 
 Agent: create_domain(domain="mycompany.com")
 ```
@@ -307,4 +307,4 @@ npm run typecheck # type check only
 
 ## License
 
-MIT © PurpleToad
+MIT © PurpleToad Mail
