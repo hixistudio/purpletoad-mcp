@@ -280,12 +280,12 @@ Common error codes:
 
 Rate limits depend on your plan:
 
-| Plan | Yearly Email Limit | API Daily Limit |
-|------|-------------------|-----------------|
-| Starter ($12/year) | 200,000 | 200 |
-| Builder ($36/year) | 1,000,000 | 1,000 |
+| Plan | Storage | Yearly Email Limit | API Daily Limit | Webhooks | Templates |
+|------|---------|-------------------|-----------------|----------|-----------|
+| Starter ($12/year) | 5 GB | 200,000 | 500 | 5 | 10 |
+| Builder ($36/year) | 25 GB | 1,000,000 | 5,000 | 25 | Unlimited |
 
-Email sends are counted against your daily quota (`yearly_limit ÷ 365`). API requests are counted per-key with scope-adjusted limits.
+Email sends are counted against your daily quota (`yearly_limit ÷ 365`). API requests are counted per-key with scope-adjusted limits. Max attachment size: 25 MB (Starter), 50 MB (Builder).
 
 The `send_email` and `schedule_email` tools return remaining quota in the response.
 
