@@ -16,17 +16,9 @@ Your agent can:
 
 ## Installation
 
-`purpletoad-mcp` is not yet on npm. Install from the repo:
-
-```bash
-# Clone and build locally
-git clone https://github.com/hixistudio/purpletoad-mcp.git
-cd purpletoad-mcp
-npm install
-npm run build
-```
-
 Requires Node.js 18+.
+
+The client configs below run the server with `npx -y purpletoad-mcp`.
 
 ## Quick Start
 
@@ -59,9 +51,7 @@ EOF
 
 ### 3. Connect to your AI client
 
-The examples below use `npx -y purpletoad-mcp`. If you are running from the
-local repo instead of npm, replace `purpletoad-mcp` with the path to the built
-repo.
+The examples below use `npx -y purpletoad-mcp`.
 
 #### Claude Desktop
 
@@ -125,8 +115,6 @@ EOF
 Then run `kimi` in a new session, or use `/mcp-config` inside Kimi Code to verify the connection.
 
 #### SSE (Remote / Self-hosted)
-
-Run from the project directory:
 
 ```bash
 PURPLETOAD_TRANSPORT=sse PURPLETOAD_PORT=3001 node dist/index.js
@@ -322,27 +310,10 @@ Common error codes:
 
 ## Rate Limits
 
-Rate limits depend on your plan:
-
-| Plan | Storage | Yearly Email Limit | API Daily Limit | Webhooks | Templates |
-|------|---------|-------------------|-----------------|----------|-----------|
-| Starter ($12/year) | 5 GB | 200,000 | 500 | 5 | 10 |
-| Builder ($36/year) | 25 GB | 1,000,000 | 5,000 | 25 | Unlimited |
-
-Email sends are counted against your daily quota (`yearly_limit ÷ 365`). API requests are counted per-key with scope-adjusted limits. Max attachment size: 25 MB (Starter), 50 MB (Builder).
+Rate limits, quotas, and attachment size vary by plan. Check your account
+dashboard for current limits.
 
 The `send_email` and `schedule_email` tools return remaining quota in the response.
-
-## Development
-
-```bash
-git clone https://github.com/hixistudio/purpletoad-mcp.git
-cd purpletoad-mcp
-npm install
-npm run dev       # watch mode
-npm run build     # compile
-npm run typecheck # type check only
-```
 
 ## Support
 
