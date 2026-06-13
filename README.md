@@ -28,17 +28,6 @@ npm run build
 
 Requires Node.js 18+.
 
-### Publishing to npm (maintainers)
-
-When you are ready to make it available via `npx purpletoad-mcp`:
-
-```bash
-npm login
-npm publish --access public
-```
-
-After publishing, the client configs below can use `npx -y purpletoad-mcp` instead of the local path.
-
 ## Quick Start
 
 ### 1. Get an API Key
@@ -70,6 +59,10 @@ EOF
 
 ### 3. Connect to your AI client
 
+The examples below use `npx -y purpletoad-mcp`. If you are running from the
+local repo instead of npm, replace `purpletoad-mcp` with the path to the built
+repo.
+
 #### Claude Desktop
 
 Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
@@ -79,7 +72,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
   "mcpServers": {
     "purpletoad": {
       "command": "npx",
-      "args": ["-y", "/opt/purpletoad/purpletoad-mcp"],
+      "args": ["-y", "purpletoad-mcp"],
       "env": {
         "PURPLETOAD_API_KEY": "pt_live_your_key_here",
         "PURPLETOAD_DEFAULT_FROM": "agent@yourdomain.com"
@@ -98,7 +91,7 @@ Add to your MCP settings:
   "mcpServers": {
     "purpletoad": {
       "command": "npx",
-      "args": ["-y", "/opt/purpletoad/purpletoad-mcp"],
+      "args": ["-y", "purpletoad-mcp"],
       "env": {
         "PURPLETOAD_API_KEY": "pt_live_your_key_here"
       }
@@ -118,7 +111,7 @@ cat > ~/.kimi-code/mcp.json <<'EOF'
   "mcpServers": {
     "purpletoad": {
       "command": "npx",
-      "args": ["-y", "/opt/purpletoad/purpletoad-mcp"],
+      "args": ["-y", "purpletoad-mcp"],
       "env": {
         "PURPLETOAD_API_KEY": "pt_live_your_key_here",
         "PURPLETOAD_DEFAULT_FROM": "agent@yourdomain.com"
@@ -133,8 +126,9 @@ Then run `kimi` in a new session, or use `/mcp-config` inside Kimi Code to verif
 
 #### SSE (Remote / Self-hosted)
 
+Run from the project directory:
+
 ```bash
-cd /opt/purpletoad/purpletoad-mcp
 PURPLETOAD_TRANSPORT=sse PURPLETOAD_PORT=3001 node dist/index.js
 ```
 
@@ -342,7 +336,7 @@ The `send_email` and `schedule_email` tools return remaining quota in the respon
 ## Development
 
 ```bash
-git clone https://github.com/purpletoad/purpletoad-mcp.git
+git clone https://github.com/hixistudio/purpletoad-mcp.git
 cd purpletoad-mcp
 npm install
 npm run dev       # watch mode
