@@ -110,6 +110,30 @@ Add to your MCP settings:
 }
 ```
 
+#### Kimi Code CLI
+
+Kimi Code supports MCP via `~/.kimi-code/mcp.json` (or `~/.kimi/mcp.json` on older versions):
+
+```bash
+mkdir -p ~/.kimi-code
+cat > ~/.kimi-code/mcp.json <<'EOF'
+{
+  "mcpServers": {
+    "purpletoad": {
+      "command": "node",
+      "args": ["/opt/purpletoad/purpletoad-mcp/dist/index.js"],
+      "env": {
+        "PURPLETOAD_API_KEY": "pt_live_your_key_here",
+        "PURPLETOAD_DEFAULT_FROM": "agent@yourdomain.com"
+      }
+    }
+  }
+}
+EOF
+```
+
+Then run `kimi` in a new session, or use `/mcp-config` inside Kimi Code to verify the connection.
+
 #### SSE (Remote / Self-hosted)
 
 ```bash
